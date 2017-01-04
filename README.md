@@ -48,11 +48,52 @@ Once you specified the language and engine to use, the next step is to apply the
     * You can also specify the speaker (e.g. Bluce, Angela)
 
 
-**Option2 : user global humix config file (*recommended*)**
+**Option2 : use global humix config file (*recommended*)**
 
 You can also provide the config of this module using the global humix config file, which is located at `~/.humix/config.js`
 The content is the same as option1, but now you move these config under the "humix-conversation-module" properties. Example config looks like
+```
+module.exports = {
 
+    sense:{
+         thinkURL : 'http://127.0.0.1:3000',
+         senseId  : 'robot1'
+    },
+    'humix-conversation-module':{
+
+        lang: 'cht', // 'en', 'cht' or 'chs'
+        'stt-engine': 'google', // 'watson' or 'google',
+        'tts-engine': 'itri', // 'watson' or 'itri' or 'iflytek'
+        stt: {
+            watson: {
+                username: '',
+                passwd: ''
+            },
+            google: {
+                username: '',
+                passwd: '',
+                googleCredentialFile: '', //the location of your google auth credential file. Absolute path
+                googleProjectName: '', //the project name which create your credential file.
+                googleLan: 'en-Us', // en-Us or cmn-Hant-TW
+            }
+        },
+        tts: {
+            watson: {
+                username: '',
+                passwd: ''
+            },
+            iflytek: {
+                appid: '<app_id>'
+            },
+            itri: {
+                username: '',
+                passwd: '',
+                speaker: 'Angela',
+            }
+        }
+    },
+}
+```
 
 ## Start module
 
